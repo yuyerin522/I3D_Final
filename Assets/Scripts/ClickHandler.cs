@@ -30,7 +30,7 @@ public class ClickHandler : MonoBehaviour
                 HandleCookedChickenClick(hitCollider);
                 break;
             default:
-                Debug.LogWarning("Unknown tag: " + hitCollider.tag);
+                Debug.Log("Unknown tag: " + hitCollider.tag);
                 break;
         }
     }

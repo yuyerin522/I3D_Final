@@ -13,7 +13,7 @@ public class RecordPlayer : MonoBehaviour
     private float discSpeed;
 
     private AudioSource audioSource;  // 음악을 재생할 AudioSource
-    public AudioClip[] musicClips;    // 음악 클립 배열 (3개의 음악)
+    public AudioClip[] musicClips;    // 음악 클립 배열
 
     void Awake()
     {

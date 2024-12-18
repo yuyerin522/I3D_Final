@@ -18,6 +18,9 @@ public class CookingSlider : MonoBehaviour
 
     private bool isGameStarted = false;    // 게임이 시작되었는지 여부
 
+    public Inventory inventory;            // 인벤토리 스크립트 참조
+    public Sprite chickenSprite;           // 생닭고기 스프라이트
+
     void Start()
     {
         // 슬라이더의 좌우 끝값 계산
@@ -81,9 +84,14 @@ public class CookingSlider : MonoBehaviour
     // 미니게임을 시작하는 함수
     public void StartCooking()
     {
+        if (inventory.HasItem(chickenSprite))
+        {
+            inventory.RemoveItemFromSlot(chickenSprite); // 인벤토리에서 생닭고기 제거
+        }
         isGameStarted = true;
         isStopped = false;
         movingBoxRect.gameObject.SetActive(true); // 슬라이더 시작
         uiPanel.SetActive(true); // UI 활성화
+
     }
 }

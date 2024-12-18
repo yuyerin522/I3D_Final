@@ -11,6 +11,7 @@ public class ClickHandler : MonoBehaviour
     public CookingSlider cookingSlider;   // CookingSlider 스크립트 참조
     public DoorController doorController; // DoorController 스크립트 참조
 
+
     public void HandleClick(Collider hitCollider)
     {
         switch (hitCollider.tag)
@@ -74,13 +75,21 @@ public class ClickHandler : MonoBehaviour
             else
             {
                 doorController.OpenOvenDoor(ovenDoor.gameObject);
+
+                // 오븐 문을 열고 생고기가 있을 때, CookingSlider 미니게임 시작
+                if (inventory.HasItem(chickenSprite))
+                {
+                    cookingSlider.inventory = inventory;
+                    cookingSlider.chickenSprite = chickenSprite;
+                    cookingSlider.StartCooking(); // 미니게임 시작
+                }
             }
         }
     }
 
-    // 구운 닭고기 (잘 구워진거/탄거)
-    private void HandleCookedChickenClick(Collider hitCollider)
-    {
+        // 구운 닭고기 (잘 구워진거/탄거)
+        private void HandleCookedChickenClick(Collider hitCollider)
+        {
         if (hitCollider.CompareTag("CookedChicken"))
         {
             inventory.AddItemToSlot(cookedChickenSprite); // 구운 닭고기 추가

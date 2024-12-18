@@ -6,15 +6,15 @@ TagManager:
   tags:
   - UP
   - DOWN
-  - FridgeDoor
   - OvenDoor
   - Oven
-  - RawChicken
   - Chicken
   - Refrigerator
   - RefrigeratorDoor
   - CookedChicken
   - BurntChicken
+  - WorldStick
+  - UnderSofa
   layers:
   - Default
   - TransparentFX

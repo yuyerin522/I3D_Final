@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StickController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class StickController : MonoBehaviour
     private bool isShaking = false;        // 흔들림 상태 확인
     private int clickCount = 0;            // 클릭 횟수
 
+    public GameObject help;
+
     void Start()
     {
         playerCamera = Camera.main; // 메인 카메라 참조
@@ -22,6 +25,8 @@ public class StickController : MonoBehaviour
         {
             handStick.SetActive(false); // 처음엔 비활성화 상태
         }
+
+        StartCoroutine(ShowGameObjectForSeconds(5f));
     }
 
     void Update()
@@ -65,6 +70,15 @@ public class StickController : MonoBehaviour
         }
     }
 
+    IEnumerator ShowGameObjectForSeconds(float seconds)
+    {
+        if (help != null)
+        {
+            help.SetActive(true);
+            yield return new WaitForSeconds(seconds);
+            help.SetActive(false);
+        }
+    }
     void ShowHandStick()
     {
         if (handStick != null)

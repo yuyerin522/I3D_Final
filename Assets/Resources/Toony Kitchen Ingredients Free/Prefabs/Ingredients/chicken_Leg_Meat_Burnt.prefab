@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 506513451506132005}
   m_Layer: 0
   m_Name: chicken_Leg_Meat_Burnt
-  m_TagString: Untagged
+  m_TagString: Chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

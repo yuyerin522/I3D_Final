@@ -38,7 +38,8 @@ public class ClickHandler : MonoBehaviour
     // 생닭고기
     private void HandleChickenClick(Collider hitCollider)
     {
-        if (chickenSprite != null)
+        // 냉장고 문이 열려 있을 때만 닭고기 집을 수 있음
+        if (chickenSprite != null && doorController.refrigeratorIsOpen)
         {
             inventory.AddItemToSlot(chickenSprite); // 인벤토리에 생닭고기 추가
             Destroy(hitCollider.gameObject);        // 클릭된 생닭고기 삭제
@@ -87,18 +88,22 @@ public class ClickHandler : MonoBehaviour
         }
     }
 
-        // 구운 닭고기 (잘 구워진거/탄거)
-        private void HandleCookedChickenClick(Collider hitCollider)
+    // 구운 닭고기 (잘 구워진거/탄거)
+    private void HandleCookedChickenClick(Collider hitCollider)
+    {
+        // 오븐 문이 열려 있을 때만 구운 닭고기를 집을 수 있음
+        if (doorController.ovenIsOpen)
         {
-        if (hitCollider.CompareTag("CookedChicken"))
-        {
-            inventory.AddItemToSlot(cookedChickenSprite); // 구운 닭고기 추가
-        }
-        else if (hitCollider.CompareTag("BurntChicken"))
-        {
-            inventory.AddItemToSlot(burntChickenSprite);  // 탄 닭고기 추가
-        }
+            if (hitCollider.CompareTag("CookedChicken"))
+            {
+                inventory.AddItemToSlot(cookedChickenSprite);
+            }
+            else if (hitCollider.CompareTag("BurntChicken"))
+            {
+                inventory.AddItemToSlot(burntChickenSprite);
+            }
 
-        Destroy(hitCollider.gameObject); // 클릭된 구운 고기 삭제
+            Destroy(hitCollider.gameObject);
+        }
     }
 }

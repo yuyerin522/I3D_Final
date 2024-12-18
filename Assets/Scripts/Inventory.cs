@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 아이템을 제거하는 함수 (오븐에 고기를 넣을 때 사용)
+    // 아이템을 제거하는 함수
     public void RemoveItemFromSlot(Sprite itemSprite)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 인벤토리 리셋 함수 (슬롯 초기화)
+    // 인벤토리 리셋 (슬롯 초기화)
     public void ResetInventory()
     {
         currentSlotIndex = 0;
@@ -57,17 +57,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // 인벤토리에 특정 아이템이 있는지 확인하는 함수
+    // 인벤토리에 특정 아이템이 있는지 확인
     public bool HasItem(Sprite itemSprite)
     {
-        // 각 슬롯에서 아이템을 확인하여, 지정된 아이템이 있는지 체크
         foreach (Image slot in inventorySlots)
         {
             if (slot.sprite == itemSprite)
             {
-                return true; // 아이템이 존재하면 true 반환
+                return true; 
             }
         }
-        return false; // 아이템이 없으면 false 반환
+        return false; 
     }
 }

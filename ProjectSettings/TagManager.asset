@@ -6,6 +6,10 @@ TagManager:
   tags:
   - UP
   - DOWN
+  - FridgeDoor
+  - OvenDoor
+  - Oven
+  - RawChicken
   layers:
   - Default
   - TransparentFX

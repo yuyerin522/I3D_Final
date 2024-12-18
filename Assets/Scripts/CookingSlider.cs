@@ -16,6 +16,8 @@ public class CookingSlider : MonoBehaviour
     private float moveSpeed = 300f;        // 네모 이동 속도
     private float sliderMinX, sliderMaxX;  // 슬라이더의 최소, 최대 X 위치
 
+    private bool isGameStarted = false;    // 게임이 시작되었는지 여부
+
     void Start()
     {
         // 슬라이더의 좌우 끝값 계산
@@ -25,7 +27,7 @@ public class CookingSlider : MonoBehaviour
 
     void Update()
     {
-        if (!isStopped)
+        if (isGameStarted && !isStopped)
         {
             MoveBox();
             if (Input.GetKeyDown(KeyCode.Space)) StopBox();
@@ -57,33 +59,31 @@ public class CookingSlider : MonoBehaviour
         float boxPositionRatio = Mathf.InverseLerp(sliderMinX, sliderMaxX, movingBoxRect.position.x);
         float temperature = Mathf.Lerp(100f, 300f, boxPositionRatio);
 
-        GameObject resultPrefab;
-
+        // 온도가 180도 ~ 200도 범위 내에 있으면 구워진 닭고기
         if (temperature >= 180f && temperature <= 200f)
         {
-            resultPrefab = cookedChickenPrefab;
+            Instantiate(cookedChickenPrefab, resultSpawnPoint.position, Quaternion.identity);
             Debug.Log("적합 온도: 구워진 닭고기!");
         }
         else
         {
-            resultPrefab = burntChickenPrefab;
+            Instantiate(burntChickenPrefab, resultSpawnPoint.position, Quaternion.identity);
             Debug.Log("부적합 온도: 탄 닭고기!");
         }
 
-        Instantiate(resultPrefab, resultSpawnPoint.position, Quaternion.identity);
-
-        // 인벤토리에 결과물을 추가
-        Inventory inventory = FindObjectOfType<Inventory>();
-        if (inventory != null)
-        {
-            Sprite resultSprite = resultPrefab.GetComponent<SpriteRenderer>().sprite; // 스프라이트 추출
-            inventory.AddItemToSlot(resultSprite);
-        }
-
-        // UI 숨기기
+        // UI 패널 숨기기
         if (uiPanel != null)
         {
             uiPanel.SetActive(false);
         }
+    }
+
+    // 미니게임을 시작하는 함수
+    public void StartCooking()
+    {
+        isGameStarted = true;
+        isStopped = false;
+        movingBoxRect.gameObject.SetActive(true); // 슬라이더 시작
+        uiPanel.SetActive(true); // UI 활성화
     }
 }

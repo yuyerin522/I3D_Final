@@ -13,6 +13,8 @@ TagManager:
   - Chicken
   - Refrigerator
   - RefrigeratorDoor
+  - CookedChicken
+  - BurntChicken
   layers:
   - Default
   - TransparentFX

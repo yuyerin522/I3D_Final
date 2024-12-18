@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    public float moveSpeed = 4.0f;                   // 이동 속도
-    public float mouseSensitivity = 100.0f;          // 마우스 감도
+    public float moveSpeed = 5.0f;                   // 이동 속도
+    public float mouseSensitivity = 200.0f;          // 마우스 감도
     public Transform cameraTransform;                // 카메라의 Transform
     private CharacterController characterController; // CharacterController
 
-    private float xRotation = 0.0f;                  // 카메라 수직 회전값
+    private float xRotation = -7.0f;                  // 카메라 수직 회전값
     private bool goingUp = false;
 
     void Start()

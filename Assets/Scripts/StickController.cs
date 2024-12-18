@@ -7,6 +7,9 @@ public class StickController : MonoBehaviour
     public GameObject handStick;           // 플레이어 손에 나타날 막대기
     public GameObject[] itemPrefabs;       // 생성할 아이템 프리팹 배열
     public Transform[] spawnPoints;        // 아이템이 생성될 스폰 위치 배열
+    public Inventory inventory;            // 인벤토리 클래스 참조
+    public Sprite ballItemSprite;          // Ball 오브젝트에 대응하는 2D 스프라이트 이미지
+    public Sprite collarItemSprite;        // Collar 오브젝트에 대응하는 2D 스프라이트 이미지
 
     private Camera playerCamera;           // 플레이어 카메라
     private bool isShaking = false;        // 흔들림 상태 확인
@@ -43,6 +46,20 @@ public class StickController : MonoBehaviour
                 {
                     StartCoroutine(ShakeStick());
                     HandleItemGeneration(); // 아이템 생성 로직 추가
+                }
+                // Ball 아이템 클릭 시
+                else if (hit.collider.CompareTag("Ball"))
+                {
+                    // Ball 태그를 클릭했을 때, 인벤토리에 2D 스프라이트 추가
+                    inventory.AddItemToSlot(ballItemSprite);  // 2D 스프라이트 추가
+                    Destroy(hit.collider.gameObject);         // 클릭한 Ball 아이템 제거
+                }
+                // Collar 아이템 클릭 시
+                else if (hit.collider.CompareTag("Collar"))
+                {
+                    // Collar 태그를 클릭했을 때, 인벤토리에 2D 스프라이트 추가
+                    inventory.AddItemToSlot(collarItemSprite);  // 2D 스프라이트 추가
+                    Destroy(hit.collider.gameObject);           // 클릭한 Collar 아이템 제거
                 }
             }
         }

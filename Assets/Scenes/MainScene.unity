@@ -722,6 +722,7 @@ Transform:
   - {fileID: 1408886815}
   - {fileID: 569069384}
   - {fileID: 482897624}
+  - {fileID: 273265826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &178839047 stripped
@@ -1070,12 +1071,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273265822}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.03, y: 0.54, z: 2.07}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 156.54825, y: 49.648457, z: -40.48804}
   m_LocalScale: {x: 1, y: 1, z: 5.5128}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 157222965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472416177
 GameObject:
@@ -4242,6 +4243,9 @@ MonoBehaviour:
   - {fileID: 8868915049869890770, guid: dd2f68598f6c1094cb76232c107bcdab, type: 3}
   - {fileID: 1975457108487340, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
   - {fileID: 1327932505511970, guid: c1088612ebac05d4a958da56ca606447, type: 3}
+  - {fileID: 100000, guid: 4cba2a89bce5afb48b8de45b6ef1b303, type: 3}
+  - {fileID: 100000, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+  - {fileID: 315896807904641206, guid: 33185712d71d5dc49a2b3d190e85ef23, type: 3}
   spawnPoints:
   - {fileID: 126587226}
   - {fileID: 1918916666}
@@ -4255,6 +4259,9 @@ MonoBehaviour:
   - {fileID: 52322154}
   - {fileID: 1198174963}
   - {fileID: 755941439}
+  inventory: {fileID: 2129477651}
+  ballItemSprite: {fileID: 21300000, guid: ed88c604065d2aa4b95134da855ae25b, type: 3}
+  collarItemSprite: {fileID: 21300000, guid: 066647532cfec21428dadc3abf11d00b, type: 3}
 --- !u!1 &1707688087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,7 +6020,6 @@ SceneRoots:
   - {fileID: 864650553}
   - {fileID: 1517446395}
   - {fileID: 157222965}
-  - {fileID: 273265826}
   - {fileID: 201325825}
   - {fileID: 1678642922}
   - {fileID: 2129477652}

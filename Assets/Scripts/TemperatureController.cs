@@ -122,4 +122,9 @@ public class TemperatureController : MonoBehaviour
         }
         spawnedPenguins.Clear();
     }
+
+    public int GetTemperature()
+    {
+        return temperature;
+    }
 }

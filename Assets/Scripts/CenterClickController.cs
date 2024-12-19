@@ -32,6 +32,10 @@ public class CenterClickController : MonoBehaviour
 
                 clickHandler.HandleClick(hit.collider);
             }
+            else
+            {
+                Debug.Log("NO");
+            }
         }
     }
 }

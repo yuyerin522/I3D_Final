@@ -145,8 +145,17 @@ public class ClickHandler : MonoBehaviour
     // 강아지 클릭
     private void HandleDogClick(Collider hitCollider)
     {
+        // 음악 재생 여부와 온도 조건 확인
+        if (recordPlayer.recordPlayerActive &&
+            temperatureController.GetTemperature() >= 30 &&
+            temperatureController.GetTemperature() <= 36)
+        {
             StartCoroutine(DogJumpAnimation(hitCollider.transform));
-            inventory.RemoveItemFromSlot(cookedChickenSprite);
+        }
+        else
+        {
+            Debug.Log("조건을 만족하지 않아 강아지가 반응하지 않습니다.");
+        }
     }
 
     // 월드스틱
@@ -199,6 +208,7 @@ public class ClickHandler : MonoBehaviour
         }
 
         dogTransform.position = originalPosition;
+        inventory.RemoveItemFromSlot(cookedChickenSprite);
         door.transform.localRotation = Quaternion.Euler(0, -80, 0); // 문 회전
     }
 

@@ -66,12 +66,10 @@ public class CookingSlider : MonoBehaviour
         if (temperature >= 180f && temperature <= 200f)
         {
             Instantiate(cookedChickenPrefab, resultSpawnPoint.position, Quaternion.identity);
-            Debug.Log("ÀûÇÕ ¿Âµµ: ±¸¿öÁø ´ß°í±â!");
         }
         else
         {
             Instantiate(burntChickenPrefab, resultSpawnPoint.position, Quaternion.identity);
-            Debug.Log("ºÎÀûÇÕ ¿Âµµ: Åº ´ß°í±â!");
         }
 
         // UI ÆĞ³Î ¼û±â±â

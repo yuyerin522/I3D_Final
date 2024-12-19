@@ -18,6 +18,7 @@ TagManager:
   - Ball
   - Collar
   - Bed
+  - Dog
   layers:
   - Default
   - TransparentFX

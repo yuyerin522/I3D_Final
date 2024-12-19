@@ -145,11 +145,8 @@ public class ClickHandler : MonoBehaviour
     // 강아지 클릭
     private void HandleDogClick(Collider hitCollider)
     {
-        if (inventory.HasItem(cookedChickenSprite))
-        {
             StartCoroutine(DogJumpAnimation(hitCollider.transform));
             inventory.RemoveItemFromSlot(cookedChickenSprite);
-        }
     }
 
     // 월드스틱

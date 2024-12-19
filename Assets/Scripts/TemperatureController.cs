@@ -97,11 +97,11 @@ public class TemperatureController : MonoBehaviour
 
     void SpawnPenguins()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 7; i++)
         {
             // 랜덤 위치 계산
-            float x = Random.Range(10f, -10f);           
-            float z = Random.Range(-5f, 15f);            
+            float x = Random.Range(-10f, 0f);           
+            float z = Random.Range(-8f, 10f);            
             Vector3 spawnPosition = new Vector3(x, 0f, z);
 
             // 랜덤 회전값 계산

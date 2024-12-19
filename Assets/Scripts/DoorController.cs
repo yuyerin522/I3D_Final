@@ -5,7 +5,8 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     public bool refrigeratorIsOpen = false;  
-    public bool ovenIsOpen = false;          
+    public bool ovenIsOpen = false;
+    public bool doorIsOpen = false;
 
     public void OpenRefrigeratorDoor(GameObject refrigeratorDoor)     // 냉장고 문 열기
     {
@@ -40,6 +41,15 @@ public class DoorController : MonoBehaviour
         {
             ovenDoor.transform.localRotation = Quaternion.Euler(0, 0, 0);
             ovenIsOpen = false;
+        }
+    }
+
+    public void OpenDoor(GameObject Door)     // 문 열기
+    {
+        if (!ovenIsOpen)
+        {
+            Door.transform.localRotation = Quaternion.Euler(0, -60, 0);
+            doorIsOpen = true;
         }
     }
 }

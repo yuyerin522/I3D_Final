@@ -21,6 +21,7 @@ public class ClickHandler : MonoBehaviour
     public GameObject handStick;          // 플레이어 손에 나타날 막대기
     public GameObject help;               // 도움말 UI
     public GameObject[] itemPrefabs;      // 생성할 아이템 프리팹 배열
+    public GameObject targetDoor;
 
     [Header("SpawnPoint")]
     public Transform spawnPoint;          // 기본 강아지 생성 위치
@@ -142,9 +143,9 @@ public class ClickHandler : MonoBehaviour
     // 강아지 클릭
     private void HandleDogClick(Collider hitCollider)
     {
-        if (inventory.HasItem(cookedChickenSprite))
+        if (inventory.HasItem(cookedChickenSprite) && targetDoor != null)
         {
-            StartCoroutine(DogJumpAnimation(hitCollider.transform));
+            StartCoroutine(DogJumpAnimation(hitCollider.transform, targetDoor));
             inventory.RemoveItemFromSlot(cookedChickenSprite);
         }
     }
@@ -174,7 +175,7 @@ public class ClickHandler : MonoBehaviour
     }
 
     //강아지 점프
-    private IEnumerator DogJumpAnimation(Transform dogTransform)
+    private IEnumerator DogJumpAnimation(Transform dogTransform, GameObject door)
     {
         Vector3 originalPosition = dogTransform.position;
         Vector3 jumpPosition = originalPosition + new Vector3(0, 2, 0);
@@ -199,6 +200,12 @@ public class ClickHandler : MonoBehaviour
         }
 
         dogTransform.position = originalPosition;
+
+        // 점프 후 문 열기
+        if (doorController != null && door != null)
+        {
+            doorController.OpenDoor(door);
+        }
     }
 
     // 막대 휘적휘적

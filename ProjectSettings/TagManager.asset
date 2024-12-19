@@ -19,6 +19,7 @@ TagManager:
   - Collar
   - Bed
   - Dog
+  - Wall
   layers:
   - Default
   - TransparentFX

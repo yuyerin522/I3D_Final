@@ -20,6 +20,7 @@ TagManager:
   - Bed
   - Dog
   - Wall
+  - Door
   layers:
   - Default
   - TransparentFX

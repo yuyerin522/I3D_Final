@@ -8,6 +8,8 @@ public class ClickHandler : MonoBehaviour
     public Inventory inventory;           // 인벤토리 스크립트 참조
     public CookingSlider cookingSlider;   // CookingSlider 스크립트 참조
     public DoorController doorController; // DoorController 스크립트 참조
+    public RecordPlayer recordPlayer;     // RecordPlayer 스크립트 참조
+    public TemperatureController temperatureController; // TemperatureController 스크립트 참조
 
     [Header("Sprite")]
     public Sprite chickenSprite;          // 닭고기 스프라이트
@@ -21,7 +23,7 @@ public class ClickHandler : MonoBehaviour
     public GameObject handStick;          // 플레이어 손에 나타날 막대기
     public GameObject help;               // 도움말 UI
     public GameObject[] itemPrefabs;      // 생성할 아이템 프리팹 배열
-    public GameObject targetDoor;
+    public GameObject door;               // 문
 
     [Header("SpawnPoint")]
     public Transform spawnPoint;          // 기본 강아지 생성 위치
@@ -143,9 +145,9 @@ public class ClickHandler : MonoBehaviour
     // 강아지 클릭
     private void HandleDogClick(Collider hitCollider)
     {
-        if (inventory.HasItem(cookedChickenSprite) && targetDoor != null)
+        if (inventory.HasItem(cookedChickenSprite))
         {
-            StartCoroutine(DogJumpAnimation(hitCollider.transform, targetDoor));
+            StartCoroutine(DogJumpAnimation(hitCollider.transform));
             inventory.RemoveItemFromSlot(cookedChickenSprite);
         }
     }
@@ -175,7 +177,7 @@ public class ClickHandler : MonoBehaviour
     }
 
     //강아지 점프
-    private IEnumerator DogJumpAnimation(Transform dogTransform, GameObject door)
+    private IEnumerator DogJumpAnimation(Transform dogTransform)
     {
         Vector3 originalPosition = dogTransform.position;
         Vector3 jumpPosition = originalPosition + new Vector3(0, 2, 0);
@@ -200,12 +202,7 @@ public class ClickHandler : MonoBehaviour
         }
 
         dogTransform.position = originalPosition;
-
-        // 점프 후 문 열기
-        if (doorController != null && door != null)
-        {
-            doorController.OpenDoor(door);
-        }
+        door.transform.localRotation = Quaternion.Euler(0, -80, 0); // 문 회전
     }
 
     // 막대 휘적휘적
